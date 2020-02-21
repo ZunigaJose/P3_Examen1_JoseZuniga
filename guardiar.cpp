@@ -4,7 +4,7 @@
 
 using namespace std;
 
-GuardiaR::GuardiaR(string nom, const int tip, int at, int df) {
+GuardiaR::GuardiaR(string nom, int tip, int at, int df) {
 	nombre = nom;
 	tipo = tip;
 	ataque = at;
