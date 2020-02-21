@@ -66,37 +66,45 @@ void nTar() {
 }
 
 void nPF() {
-	string nom, sim, lem;
-	int at, df;
-	cout << "Ingrese el nombre: ";
-	getline(cin, nom);
-	cout << "Ingrese el simbolo: ";
-	getline(cin, sim);
-	cout << "Ingrese el lema; ";
-	getline(cin, lem);
-	cout << "Ingrese el ataque: ";
-	cin >> at;
-	cout << "Ingrese la defensa: ";
-	cin >> df;
-	starks.setEjercito(EjPFN(nom,sim, lem, at, df));
+	if(starks.size() >= 10) {
+		string nom, sim, lem;
+		int at, df;
+		cout << "Ingrese el nombre: ";
+		getline(cin, nom);
+		cout << "Ingrese el simbolo: ";
+		getline(cin, sim);
+		cout << "Ingrese el lema; ";
+		getline(cin, lem);
+		cout << "Ingrese el ataque: ";
+		cin >> at;
+		cout << "Ingrese la defensa: ";
+		cin >> df;
+		starks.setEjercito(EjPFN(nom,sim, lem, at, df));
+	} else {
+		cout << "Ya hay 10!" << endl;
+	}
 }
 
 void nDrag() {
-	string nom, col;
-       	int tam, dis, at, df;
-        cout << "Ingrese el nombre: ";
-        getline(cin, nom);
-        cout << "Ingrese el color: ";
-        getline(cin, col);
-        cout << "Ingrese el tamaño: ";
-        cin >> tam;
-	cout << "Ingrese la distancia de la llama: ";
-	cin >> dis;
-        cout << "Ingrese el ataque: ";
-        cin >> at;
-        cout << "Ingrese la defensa: ";
-        cin >> df;
-	tar.setEjercito(Dragon(nom, col, tam, dis, at, df));
+	if(tar.size() >= 10) {
+		string nom, col;
+	       	int tam, dis, at, df;
+        	cout << "Ingrese el nombre: ";
+	        getline(cin, nom);
+	        cout << "Ingrese el color: ";
+	        getline(cin, col);
+        	cout << "Ingrese el tamaño: ";
+	        cin >> tam;
+		cout << "Ingrese la distancia de la llama: ";
+		cin >> dis;
+	        cout << "Ingrese el ataque: ";
+	        cin >> at;
+        	cout << "Ingrese la defensa: ";
+	        cin >> df;
+		tar.setEjercito(Dragon(nom, col, tam, dis, at, df));
+	} else {
+		cout << "Ya hay 10!" << endl;
+	}
 }
 
 int mTipo() {
@@ -109,29 +117,31 @@ int mTipo() {
 }
 
 void nGuardia() {
-	string nom;
-       	int tip, at, df;
-	cout << "Ingrese el nombre: ";
-	cin >> nom;
-	tip = mTipo();
-	cout << "Ingrese el ataque: ";
-        cin >> at;
-        cout << "Ingrese la defensa: ";
-        cin >> df;
-	switch (tip) {
-		case 1: lani.setEjercito(GuardiaR(nom, GuardiaR::CABALLERO, at, df));
-			break;
-		case 2:  lani.setEjercito(GuardiaR(nom, GuardiaR::JINETE, at, df));
-			 break;
-		case 3: lani.setEjercito(GuardiaR(nom, GuardiaR::ARQUERO, at, df));
-			break;
+	if (lani.size() >= 10) {
+		string nom;
+	       	int tip, at, df;
+		cout << "Ingrese el nombre: ";
+		cin >> nom;
+		tip = mTipo();
+		cout << "Ingrese el ataque: ";
+	        cin >> at;
+        	cout << "Ingrese la defensa: ";
+	        cin >> df;
+		switch (tip) {
+			case 1: lani.setEjercito(GuardiaR(nom, GuardiaR::CABALLERO, at, df));
+				break;
+			case 2:  lani.setEjercito(GuardiaR(nom, GuardiaR::JINETE, at, df));
+				 break;
+			case 3: lani.setEjercito(GuardiaR(nom, GuardiaR::ARQUERO, at, df));
+				break;
+		}
 	}
 }
 
 int menu() {
 	int op;
 	cout << "----Menu-----";
-	cout << "0. Salir\n1. Agregar Familia\n2. Agregar Ejercito\n3. Simular: ";
+	cout << "0. Salir\n1. Agregar Familia\n2. Agregar Ejercito\n3. Listar\n4. Simular: ";
 	cin >> op;
 	if (op < 0 || op > 3) {
 		return menu();
@@ -141,6 +151,7 @@ int menu() {
 
 int cualFamilia() {
 	int op;
+	cout << "------Familia-------" << endl;
 	cout << "1. Starks\n2. Lannister\n3. Targaryen: ";
 	cin >> op;
 	if (op < 1 || op > 3) 
@@ -157,13 +168,27 @@ int main() {
 			subOp = cualFamilia();
 			switch (subOp) {
 				case 1:
-				nStarks();
+					nStarks();
 				break;
 				case 2: 
-				nLani();
+					nLani();
 				break;
 				case 3:
-				nTar();
+					nTar();
+				break;
+			}
+		break;
+		case 2:
+			subOp = cualFamilia();
+			switch (subOp) {
+				case 1: 
+					nPF();
+				break;
+				case 2:
+					nDrag();
+				break;
+				case 3:
+					nGuardia();
 				break;
 			}
 		break;

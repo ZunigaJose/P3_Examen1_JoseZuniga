@@ -14,5 +14,6 @@ class Stark {
 		Stark() { };
 		Stark(string, string, string, int, int);
 		void setEjercito(EjPFN ej) { Ejercito.push_back(ej); }
+		int size() { return Ejercito.size(); }
 		
 };
