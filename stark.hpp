@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "EjPFN.hpp"
 using namespace std;
 
 class Stark {
