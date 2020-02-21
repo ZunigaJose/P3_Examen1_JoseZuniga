@@ -8,11 +8,15 @@
 #include "targaryen.hpp"
 using namespace std;
 
+Stark starks;
+Lannister lani;
+Targaryen tar;
+
 void simulacion () {
 
 }
 
-Stark nStarks() {
+void nStarks() {
 	string jefe, animal, lema;
 	int cant, lobos;
 	cout << "Ingrese nombre del jefe: ";
@@ -25,10 +29,10 @@ Stark nStarks() {
 	cin >> lobos;
 	cout << "Ingrese la cantidad de miembros: ";
 	cin >> cant;
-	return Stark(jefe, animal, lema, lobos, cant);
+	starks = Stark(jefe, animal, lema, lobos, cant);
 }
 
-Lannister nLani() {
+void nLani() {
 	string jefe, animal, lema, fuerza;
         int cant, lobos;
         cout << "Ingrese nombre del jefe: ";
@@ -43,10 +47,10 @@ Lannister nLani() {
         cin >> lobos;
         cout << "Ingrese la cantidad de miembros: ";
         cin >> cant;
-        return Lannister(jefe, animal, lema, fuerza, lobos, cant);
+        lani = Lannister(jefe, animal, lema, fuerza, lobos, cant);
 }
 
-Targaryen nTar() {
+void nTar() {
 	string jefe, animal, lema;
         int barcos;
         cout << "Ingrese nombre de la reina: ";
@@ -57,11 +61,11 @@ Targaryen nTar() {
         getline(cin, lema);
         cout << "Ingrese la cantdad de Barcos: ";
         cin >> barcos;
-        return Targaryen(jefe, animal, lema, barcos);
+        tar = Targaryen(jefe, animal, lema, barcos);
 
 }
 
-EjPFN nPF() {
+void nPF() {
 	string nom, sim, lem;
 	int at, df;
 	cout << "Ingrese el nombre: ";
@@ -74,10 +78,10 @@ EjPFN nPF() {
 	cin >> at;
 	cout << "Ingrese la defensa: ";
 	cin >> df;
-	return EjPFN(nom,sim, lem, at, df);
+	starks.setEjercito(EjPFN(nom,sim, lem, at, df));
 }
 
-Dragon nDrag() {
+void nDrag() {
 	string nom, col;
        	int tam, dis, at, df;
         cout << "Ingrese el nombre: ";
@@ -92,8 +96,9 @@ Dragon nDrag() {
         cin >> at;
         cout << "Ingrese la defensa: ";
         cin >> df;
-	return Dragon(nom, col, tam, dis, at, df);
+	tar.setEjercito(Dragon(nom, col, tam, dis, at, df));
 }
+
 int mTipo() {
 	int op;
 	cout << "1. Caballero\n2. Jinete\n3. Arquero: ";
@@ -103,7 +108,7 @@ int mTipo() {
 	return op;
 }
 
-GuardiaR nGuardia() {
+void nGuardia() {
 	string nom;
        	int tip, at, df;
 	cout << "Ingrese el nombre: ";
@@ -114,9 +119,12 @@ GuardiaR nGuardia() {
         cout << "Ingrese la defensa: ";
         cin >> df;
 	switch (tip) {
-		case 1: return Guardia(nom, GuardiaR::CABALLERO, at, df);
-		case 2: return Guardia(nom, GuardiaR::JINETE, at, df);
-		case 3: return Guardia(nom, GuardiaR::ARQUERO, at, df);
+		case 1: lani.setEjercito(GuardiaR(nom, GuardiaR::CABALLERO, at, df));
+			break;
+		case 2:  lani.setEjercito(GuardiaR(nom, GuardiaR::JINETE, at, df));
+			 break;
+		case 3: lani.setEjercito(GuardiaR(nom, GuardiaR::ARQUERO, at, df));
+			break;
 	}
 }
 
@@ -131,9 +139,35 @@ int menu() {
 	return op;
 }
 
-
+int cualFamilia() {
+	int op;
+	cout << "1. Starks\n2. Lannister\n3. Targaryen: ";
+	cin >> op;
+	if (op < 1 || op > 3) 
+		return cualFamilia();
+	return op;
+}
 
 int main() {
-
+	int op, subOp;
+	do {
+	op = menu();
+	switch (op) {
+		case 1:
+			subOp = cualFamilia();
+			switch (subOp) {
+				case 1:
+				nStarks();
+				break;
+				case 2: 
+				nLani();
+				break;
+				case 3:
+				nTar();
+				break;
+			}
+		break;
+		}
+	} while (op);
 	return 0;
 }
