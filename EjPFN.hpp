@@ -1,14 +1,16 @@
 #include <iostream>
 #include <string>
 #pragma once
+using namespace std;
 
-class EjPFM {
+class EjPFN {
 	private: 
 		string nombre, simbolo, lema;
 		int ataque, defensa;
 
 
 	public:
-		EjPFM(string, string, string, int, int);
-		string toString() {return "Nombre: " + nombre + " simbolo: " + simbolo + " lema: " + lema + " ataque: " + ataque + " Defensa: " + defensa;}
+		EjPFN(){ };
+		EjPFN(string, string, string, int, int);
+		void toString();
 };

@@ -1,16 +1,17 @@
 #pragma once
 #include <string>
 #include <vector>
+using namespace std;
 
 class Stark {
 	private:
 		string jefe, animal, lema;
 		int nLobos, nIntegrantes;
-		vector <EjPFM> Ejercito;
+		vector <EjPFN> Ejercito;
 
 	public:
 		Stark() { };
 		Stark(string, string, string, int, int);
-		void setEjercito(EjPFm ej) { Ejercito.push_back(ej); }
+		void setEjercito(EjPFN ej) { Ejercito.push_back(ej); }
 		
 };
