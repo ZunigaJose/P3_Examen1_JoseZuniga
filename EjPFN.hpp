@@ -12,5 +12,7 @@ class EjPFN {
 	public:
 		EjPFN(){ };
 		EjPFN(string, string, string, int, int);
+		template<class X, class Y>
+                friend void simula(X, Y);
 		void toString();
 };

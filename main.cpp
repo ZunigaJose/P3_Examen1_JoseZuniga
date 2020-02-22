@@ -9,28 +9,46 @@
 using namespace std;
 
 Stark starks;
+bool starkB = false;
 Lannister lani;
+bool lanB = false;
 Targaryen tar;
+bool tarB = false;
 
 template<class X, class Y>
 void simula(X x, Y y) {
 	int atkX = 0, atkY = 0, defX = 0, defY = 0;
-	if(!(x.template ejercito.empty()) || !(y.template ejercito.empty())) {
+	if(!(x.template ejercito.empty()) || !(y.template ejercito.empty())){
 		for(int i = 0; i < x.template ejercito.size(); i++) {
 			atkX += x.template ejercito[i].ataque;
 		}
 		atkX /= x.ejercito.size();
 		for(int i = 0; i < y.template ejercito.size(); i++) {
-                        atkX += y.template ejercito[i].ataque;
+                        atkY += y.template ejercito[i].ataque;
                 }
-                atkX /= y.ejercito.size();
+                atkY /= y.ejercito.size();
 
+		for(int i = 0; i < x.template ejercito.size(); i++) {
+                        defX += x.template ejercito[i].defensa;
+                }
+                defX /= x.ejercito.size();
+                for(int i = 0; i < y.template ejercito.size(); i++) {
+                        defY += y.template ejercito[i].defensa;
+                }
+                defY /= y.ejercito.size();
+		while(defX >= 0 && defY >= 0) {
+			cout << "Familia 1: " << defX;
+			defX -= atkX;
+			cout << "Familia 2: " << defY;
+			defY -= atkY;
+		}
 	} else {
 		cout << "Alguno de los dos no tiene ejercito aun!!!";
 	}
-} 
+}
 
 void nStarks() {
+	if(!starkB) {
 	string jefe, animal, lema;
 	int cant, lobos;
 	cout << "Ingrese nombre del jefe: ";
@@ -47,9 +65,14 @@ void nStarks() {
 	cout << "Ingrese la cantidad de miembros: ";
 	cin >> cant;
 	starks = Stark(jefe, animal, lema, lobos, cant);
+	starkB = true;
+	} else {
+		cout << "Ya existe!";
+	}
 }
 
 void nLani() {
+	if(!lanB) {
 	string jefe, animal, lema, fuerza;
         int cant, lobos;
         cout << "Ingrese nombre del jefe: ";
@@ -69,9 +92,14 @@ void nLani() {
         cout << "Ingrese la cantidad de miembros: ";
         cin >> cant;
         lani = Lannister(jefe, animal, lema, fuerza, lobos, cant);
+	lanB = true;
+	} else {
+		cout << " yA";
+	}
 }
 
 void nTar() {
+	if (!tarB) {
 	string jefe, animal, lema;
         int barcos;
         cout << "Ingrese nombre de la reina: ";
@@ -86,6 +114,10 @@ void nTar() {
         cout << "Ingrese la cantdad de Barcos: ";
         cin >> barcos;
         tar = Targaryen(jefe, animal, lema, barcos);
+	tarB = true;
+	} else {
+		cout << "Ya";
+	}
 }
 
 void nPF() {
@@ -169,7 +201,7 @@ void nGuardia() {
 int menu() {
 	int op;
 	cout << "----Menu-----";
-	cout << "0. Salir\n1. Agregar Familia\n2. Agregar Ejercito\n3. Listar\n4. Simular: ";
+	cout << "\n0. Salir\n1. Agregar Familia\n2. Agregar Ejercito\n3. Listar\n4. Simular: ";
 	cin >> op;
 	if (op < 0 || op > 3) {
 		return menu();
@@ -188,7 +220,7 @@ int cualFamilia() {
 }
 
 int main() {
-	int op, subOp;
+	int op, subOp, subOp2;
 	do {
 	op = menu();
 	switch (op) {
@@ -234,7 +266,15 @@ int main() {
 			}
 		break;
 		case 4:
-			simula(starks, tar);
+			subOp = cualFamilia();
+			subOp2 = cualFamilia();
+			if(subOp == 1 && subOp2 == 2) {
+				simula(starks, tar);
+			}else if (subOp == 1 && subOp2 == 3) {
+				simula(starks, lani);
+			} else {
+				simula(tar, lani);
+			}
 		break;
 		}
 	} while (op);

@@ -9,6 +9,8 @@ class Dragon {
 	public:
 		Dragon() {};
 		Dragon(string, string, int, int, int, int);
+		template<class X, class Y>
+                friend void simula(X, Y);
 		void toString();
 };
 

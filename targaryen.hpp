@@ -16,5 +16,6 @@ class Targaryen {
 		void setEjercito(Dragon ej) {ejercito.push_back(ej); }
 		int size() { return ejercito.size(); }
 		void imprimir();
-		friend void simula();
+		template<class X, class Y>
+		friend void simula(X, Y);
 };
