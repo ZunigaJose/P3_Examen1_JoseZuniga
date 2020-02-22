@@ -12,10 +12,19 @@ Stark starks;
 Lannister lani;
 Targaryen tar;
 
-template<class x, class y>
-void simula() {
-	if(!(x::template ejercito.empty()) || !(y::template ejercito.empty())) {
-		
+template<class X, class Y>
+void simula(X x, Y y) {
+	int atkX = 0, atkY = 0, defX = 0, defY = 0;
+	if(!(x.template ejercito.empty()) || !(y.template ejercito.empty())) {
+		for(int i = 0; i < x.template ejercito.size(); i++) {
+			atkX += x.template ejercito[i].ataque;
+		}
+		atkX /= x.ejercito.size();
+		for(int i = 0; i < y.template ejercito.size(); i++) {
+                        atkX += y.template ejercito[i].ataque;
+                }
+                atkX /= y.ejercito.size();
+
 	} else {
 		cout << "Alguno de los dos no tiene ejercito aun!!!";
 	}
@@ -225,7 +234,7 @@ int main() {
 			}
 		break;
 		case 4:
-		
+			simula(starks, tar);
 		break;
 		}
 	} while (op);
