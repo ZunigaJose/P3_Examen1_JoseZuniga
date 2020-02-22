@@ -9,3 +9,9 @@ Stark::Stark(string jef, string anim, string lem, int lob, int miem) {
 	nLobos = lob;
 	nIntegrantes = miem;
 }
+
+void Stark::imprimir() {
+	for(int i = 0; i < ejercito.size(); i++) {
+		ejercito[i].toString();
+	}	
+}

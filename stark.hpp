@@ -8,12 +8,13 @@ class Stark {
 	private:
 		string jefe, animal, lema;
 		int nLobos, nIntegrantes;
-		vector <EjPFN> Ejercito;
+		vector <EjPFN> ejercito;
 
 	public:
 		Stark() { };
 		Stark(string, string, string, int, int);
-		void setEjercito(EjPFN ej) { Ejercito.push_back(ej); }
-		int size() { return Ejercito.size(); }
-		
+		void setEjercito(EjPFN ej) { ejercito.push_back(ej); }
+		int size() { return ejercito.size(); }
+		void imprimir();
+		friend void simula();	
 };

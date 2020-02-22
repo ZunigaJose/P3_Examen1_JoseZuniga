@@ -21,6 +21,6 @@ void GuardiaR::toString() {
 		case 3: cout << "Arquero ";
 		break;
 	}
-	cout << "Ataque: " << ataque; 
+	cout << " Ataque: " << ataque; 
 	cout << " Defensa: " << defensa << endl;
 }

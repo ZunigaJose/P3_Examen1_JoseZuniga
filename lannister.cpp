@@ -10,3 +10,9 @@ Lannister::Lannister(string jf, string ani, string lem, string fue, int din, int
 	dinero = din;
 	miembros = mi;
 }
+
+void Lannister::imprimir() {
+	for(int i = 0; i < ejercito.size(); i++) {
+		ejercito[i].toString();
+	}
+}

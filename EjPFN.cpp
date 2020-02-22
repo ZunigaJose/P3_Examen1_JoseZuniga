@@ -11,5 +11,5 @@ EjPFN::EjPFN(string nom, string sim, string lem, int at, int df) {
 }
 
 void EjPFN::toString() {
-	cout << "Nombre: " << nombre << " simbolo: " <<  simbolo << " lema: " << lema << " ataque: " << ataque << " Defensa: " << defensa;
+	cout << "Nombre: " << nombre << " simbolo: " <<  simbolo << " lema: " << lema << " ataque: " << ataque << " Defensa: " << defensa << endl;
 }

@@ -12,18 +12,26 @@ Stark starks;
 Lannister lani;
 Targaryen tar;
 
-void simulacion () {
-
-}
+template<class x, class y>
+void simula() {
+	if(!(x::template ejercito.empty()) || !(y::template ejercito.empty())) {
+		
+	} else {
+		cout << "Alguno de los dos no tiene ejercito aun!!!";
+	}
+} 
 
 void nStarks() {
 	string jefe, animal, lema;
 	int cant, lobos;
 	cout << "Ingrese nombre del jefe: ";
+	cin.ignore();
 	getline(cin, jefe);
 	cout << "Ingrese el animal emblema: ";
+	cin.ignore();
 	getline(cin, animal);
 	cout << "Ingrese el lema: ";
+	cin.ignore();
 	getline(cin, lema);
 	cout << "Ingrese la cantdad de lobos: ";
 	cin >> lobos;
@@ -36,12 +44,16 @@ void nLani() {
 	string jefe, animal, lema, fuerza;
         int cant, lobos;
         cout << "Ingrese nombre del jefe: ";
+	cin.ignore();
         getline(cin, jefe);
 	cout << "Ingrese el animal emblema: ";
+	cin.ignore();
         getline(cin, animal);
 	cout << "Ingrese la fuerza de la montaña: ";
+	cin.ignore();
 	cin >> fuerza;
         cout << "Ingrese el lema: ";
+	cin.ignore();
         getline(cin, lema);
         cout << "Ingrese la cantdad de lobos: ";
         cin >> lobos;
@@ -54,26 +66,31 @@ void nTar() {
 	string jefe, animal, lema;
         int barcos;
         cout << "Ingrese nombre de la reina: ";
+	cin.ignore();
         getline(cin, jefe);
         cout << "Ingrese el animal emblema: ";
+	cin.ignore();
         getline(cin, animal);
         cout << "Ingrese el lema: ";
+	cin.ignore();
         getline(cin, lema);
         cout << "Ingrese la cantdad de Barcos: ";
         cin >> barcos;
         tar = Targaryen(jefe, animal, lema, barcos);
-
 }
 
 void nPF() {
-	if(starks.size() >= 10) {
+	if(starks.size() <= 10) {
 		string nom, sim, lem;
 		int at, df;
 		cout << "Ingrese el nombre: ";
+		cin.ignore();
 		getline(cin, nom);
 		cout << "Ingrese el simbolo: ";
+		cin.ignore();
 		getline(cin, sim);
 		cout << "Ingrese el lema; ";
+		cin.ignore();
 		getline(cin, lem);
 		cout << "Ingrese el ataque: ";
 		cin >> at;
@@ -86,12 +103,14 @@ void nPF() {
 }
 
 void nDrag() {
-	if(tar.size() >= 10) {
+	if(tar.size() <= 10) {
 		string nom, col;
 	       	int tam, dis, at, df;
         	cout << "Ingrese el nombre: ";
+		cin.ignore();
 	        getline(cin, nom);
 	        cout << "Ingrese el color: ";
+		cin.ignore();
 	        getline(cin, col);
         	cout << "Ingrese el tamaño: ";
 	        cin >> tam;
@@ -117,7 +136,7 @@ int mTipo() {
 }
 
 void nGuardia() {
-	if (lani.size() >= 10) {
+	if (lani.size() <= 10) {
 		string nom;
 	       	int tip, at, df;
 		cout << "Ingrese el nombre: ";
@@ -191,6 +210,22 @@ int main() {
 					nGuardia();
 				break;
 			}
+		break;
+		case 3: 
+			subOp = cualFamilia();
+			switch(subOp) {
+				case 1:
+					starks.imprimir();
+				break;
+				case 2: 
+					tar.imprimir();
+				break;
+				case 3:
+					lani.imprimir();
+			}
+		break;
+		case 4:
+		
 		break;
 		}
 	} while (op);

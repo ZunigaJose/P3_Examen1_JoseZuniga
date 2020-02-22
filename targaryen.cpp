@@ -8,3 +8,9 @@ Targaryen::Targaryen(string rei, string ani, string lem, int barc) {
 	lema = lem;
 	nBarcos = barc;	
 }
+
+void Targaryen::imprimir() {
+	for(int i = 0; i < ejercito.size(); i++) {
+		ejercito[i].toString();
+	}
+}

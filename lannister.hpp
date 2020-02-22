@@ -16,4 +16,6 @@ class Lannister {
 		Lannister(string, string, string, string, int, int);
 		void setEjercito(GuardiaR ej) {ejercito.push_back(ej);}
 		int size() { return ejercito.size(); }
+		void imprimir();
+		friend void simula();
 };
